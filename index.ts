@@ -55,3 +55,5 @@ banana = anything; // String型で定義していてもany型を代入できる 
 let unionType: number | string = 10;
 unionType = 'Hello';
 unionType.toUpperCase();
+
+let unionTypes: (number | string)[] = [21, 'hello'];
