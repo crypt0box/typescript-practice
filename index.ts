@@ -57,3 +57,13 @@ unionType = 'Hello';
 unionType.toUpperCase();
 
 let unionTypes: (number | string)[] = [21, 'hello'];
+
+const apple: 'apple' = 'apple';
+let clothSize: 'small' | 'medium' | 'large' = 'medium';
+const cloth: {
+  color: String;
+  size: 'small' | 'medium' | 'large';
+} = {
+  color: 'white',
+  size: 'medium'
+}
