@@ -58,12 +58,29 @@ unionType.toUpperCase();
 
 let unionTypes: (number | string)[] = [21, 'hello'];
 
+type ClothSize = 'small' | 'medium' | 'large';
 const apple: 'apple' = 'apple';
 let clothSize: 'small' | 'medium' | 'large' = 'medium';
 const cloth: {
   color: String;
-  size: 'small' | 'medium' | 'large';
+  size: ClothSize;
 } = {
   color: 'white',
   size: 'medium'
 }
+
+function add(num1: number, num2: number): number {
+  return num1 + num2
+}
+
+function sayHello(): void {
+  console.log('Hello!');
+}
+
+function sayHello2(): undefined {
+  console.log('Hello!');
+  return;
+}
+
+console.log(sayHello());
+let tmp: undefined;
