@@ -1,18 +1,18 @@
 "use strict";
-var hasValue = true;
-var count = 10;
-var float = 3.14;
-var negative = -0.12;
-var single = 'hello';
-var double = "hello";
-var back = "hello";
-var person = {
+let hasValue = true;
+let count = 10;
+let float = 3.14;
+let negative = -0.12;
+let single = 'hello';
+let double = "hello";
+let back = `hello`;
+const person = {
     name: 'Jack',
     age: 21
 };
-var fruits = ['Apple', 'Banana', 'Grape', 1];
-var family = ['taro', 'ziro', 32, true];
-var book = ['business', 1500, false];
+const fruits = ['Apple', 'Banana', 'Grape', 1];
+const family = ['taro', 'ziro', 32, true];
+const book = ['business', 1500, false];
 book.push(21);
 console.log(person);
 var CoffeeSize;
@@ -30,25 +30,25 @@ enum CoffeeSize {
   VENTI,
 }
 */
-var coffee = {
+const coffee = {
     hot: true,
     size: CoffeeSize.TALL
 };
 coffee.size = CoffeeSize.SHORT;
-var anything = true;
+let anything = true;
 anything = 'hello';
 anything = ['hello', 33, true];
 anything = {};
 anything.foo = 'bar';
-var banana = 'banana';
+let banana = 'banana';
 banana = anything; // String型で定義していてもany型を代入できる -> なるべくanyは使わない
-var unionType = 10;
+let unionType = 10;
 unionType = 'Hello';
 unionType.toUpperCase();
-var unionTypes = [21, 'hello'];
-var apple = 'apple';
-var clothSize = 'medium';
-var cloth = {
+let unionTypes = [21, 'hello'];
+const apple = 'apple';
+let clothSize = 'medium';
+const cloth = {
     color: 'white',
     size: 'medium'
 };
@@ -63,20 +63,20 @@ function sayHello2() {
     return;
 }
 console.log(sayHello());
-var tmp;
-var anotherAdd = add;
-var doubleNumber = function (num) { return num * 2; };
-var anotherDoubleNumber = function (num) { return num * 2; };
+let tmp;
+const anotherAdd = add;
+const doubleNumber = (num) => num * 2;
+const anotherDoubleNumber = num => num * 2;
 function doubleAndHandle(num, cb) {
-    var doubleNum = cb(num * 2);
+    const doubleNum = cb(num * 2);
     console.log(doubleNum);
 }
-doubleAndHandle(21, function (doubleNum) {
+doubleAndHandle(21, doubleNum => {
     return doubleNum;
 });
-var unknownInput;
-var anyInput;
-var text;
+let unknownInput;
+let anyInput;
+let text;
 unknownInput = 'hello';
 unknownInput = 21;
 unknownInput = true;
