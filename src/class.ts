@@ -38,6 +38,7 @@ abstract class Person {
 // anotherQuill.anotherGreeting(); // thisは呼び出された時に決まる
 
 class Teacher extends Person{
+  private static instance: Teacher;
   explainJob() {
     console.log(`I am a teacher and I teach ${this.subject}`)
   }
@@ -53,8 +54,13 @@ class Teacher extends Person{
     }
     this._subject = value;
   }
-  constructor(name: string, age: number, private _subject: string) {
+  private constructor(name: string, age: number, private _subject: string) {
     super(name, age);
+  }
+  static getInstance() {
+    if (Teacher.instance) return Teacher.instance;
+    Teacher.instance = new Teacher('Quill', 38, 'Math');
+    return Teacher.instance;
   }
   greeting() {
     console.log(`Hello! My name is ${this.name}. I am ${this.age} years old. I teach ${this._subject}`);
@@ -68,5 +74,5 @@ class Teacher extends Person{
 console.log(Person.species)
 console.log(Person.isAdult(38))
 
-const teacher = new Teacher('Quill', 38, 'Math');
+const teacher = Teacher.getInstance();
 teacher.greeting();
