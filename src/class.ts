@@ -1,5 +1,9 @@
-class Person {
-
+abstract class Person {
+  static species = 'Homo sapiens';
+  static isAdult(age: number) {
+    if (age > 17) return true;
+    return false;
+  }
   // name: string;
   // private age: number;
 
@@ -21,9 +25,10 @@ class Person {
   greeting(this: Person) {
     console.log(`Hello! My name is ${this.name}. I am ${this.age} years old.`);
   }
+  abstract explainJob(): void;
 }
-const quill = new Person('Quill', 38);
-quill.greeting();
+// const quill = new Person('Quill', 38);
+// quill.greeting();
 
 // const anotherQuill = {
 //   name: 'anotherQuill',
@@ -33,6 +38,9 @@ quill.greeting();
 // anotherQuill.anotherGreeting(); // thisは呼び出された時に決まる
 
 class Teacher extends Person{
+  explainJob() {
+    console.log(`I am a teacher and I teach ${this.subject}`)
+  }
   get subject() {
     if (!this._subject) {
       throw new Error('There is no subject.');
@@ -53,6 +61,12 @@ class Teacher extends Person{
   }
 }
 
-const teacher = new Teacher('Quill', 34, 'Math');
-console.log(teacher.subject);
+// const teacher = new Teacher('Quill', 34, 'Math');
+// console.log(teacher.subject);
+// teacher.greeting();
+
+console.log(Person.species)
+console.log(Person.isAdult(38))
+
+const teacher = new Teacher('Quill', 38, 'Math');
 teacher.greeting();

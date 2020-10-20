@@ -13,6 +13,11 @@ class Person {
         this.name = name;
         this.age = age;
     }
+    static isAdult(age) {
+        if (age > 17)
+            return true;
+        return false;
+    }
     incrementAge() {
         this.age += 1;
     }
@@ -20,8 +25,9 @@ class Person {
         console.log(`Hello! My name is ${this.name}. I am ${this.age} years old.`);
     }
 }
-const quill = new Person('Quill', 38);
-quill.greeting();
+Person.species = 'Homo sapiens';
+// const quill = new Person('Quill', 38);
+// quill.greeting();
 // const anotherQuill = {
 //   name: 'anotherQuill',
 //   greeting() {},
@@ -33,13 +39,29 @@ class Teacher extends Person {
         super(name, age);
         this._subject = _subject;
     }
+    explainJob() {
+        console.log(`I am a teacher and I teach ${this.subject}`);
+    }
     get subject() {
-        return 'Music';
+        if (!this._subject) {
+            throw new Error('There is no subject.');
+        }
+        return this._subject;
+    }
+    set subject(value) {
+        if (!value) {
+            throw new Error('There is no subject.');
+        }
+        this._subject = value;
     }
     greeting() {
         console.log(`Hello! My name is ${this.name}. I am ${this.age} years old. I teach ${this._subject}`);
     }
 }
-const teacher = new Teacher('Quill', 34, 'Math');
-console.log(teacher.subject);
+// const teacher = new Teacher('Quill', 34, 'Math');
+// console.log(teacher.subject);
+// teacher.greeting();
+console.log(Person.species);
+console.log(Person.isAdult(38));
+const teacher = new Teacher('Quill', 38, 'Math');
 teacher.greeting();
