@@ -20,3 +20,13 @@ class Developer implements Human {
     console.log(message);
   }
 }
+
+const tmpDeveloper = {
+  name: 'Quill',
+  age: 38,
+  experience: 3,
+  greeting(message: string) {
+    console.log(message);
+  }
+}
+const user: Human = tmpDeveloper;
