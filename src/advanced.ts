@@ -29,14 +29,21 @@ interface TmpFunc {
   (x: number): number;
 }
 const upperHello: TmpFunc = function (x: string | number) { return 0 };
+// interface FuncA {
+//   (a: number, b: string): number;
+//   (a: string, b: number): number;
+// }
+// interface FuncB {
+//   (a: string): number;
+// }
+// let intersectionFunc: FuncA & FuncB;
 interface FuncA {
-  (a: number, b: string): number;
-  (a: string, b: number): number;
+  (a: number): number;
 }
 interface FuncB {
-  (a: string): number;
+  (a: string): string;
 }
-let intersectionFunc: FuncA & FuncB;
+let unionFunc: FuncA | FuncB;
 
 type NomadWorker = Engineer | Blogger;
 function describeProfile(nomadWorker: NomadWorker) {
@@ -109,3 +116,14 @@ let target = function (a: string, b: string) { }
 let source = function (a: string) {}
 target = source;
 target('hi', 'hello')
+
+function advancedFn(...args: [number, string, boolean, ...number[]]) {
+}
+advancedFn(0, 'hi', true, 32)
+
+const array = [10, 20] as const;
+const peter = {
+  name: 'Peter',
+  age: 38
+} as const;
+type PeterType = typeof peter;
