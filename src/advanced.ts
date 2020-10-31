@@ -90,3 +90,10 @@ const downloadedData: DownloadedData = {
   id: 1
 }
 console.log(downloadedData.user?.name);
+const userData = downloadedData.user ?? 'no-user';
+// undefinedもしくはnullのとき右のやつを代入
+type id = DownloadedData["id"];
+let target = function (a: string, b: string) { }
+let source = function (a: string) {}
+target = source;
+target('hi', 'hello')
