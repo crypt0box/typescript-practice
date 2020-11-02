@@ -26,3 +26,21 @@ stringLightDatabase.add('Banana');
 stringLightDatabase.add('Grape');
 stringLightDatabase.remove('Banana');
 console.log(stringLightDatabase.get());
+
+interface Todo {
+  title: string;
+  text: string;
+}
+type Todoable = Partial<Todo>
+type ReadTodo = Readonly<Todo>
+
+const fetchData: Promise<string> = new Promise(resolve => {
+  setTimeout(() => {
+    resolve('hello');
+  }, 2000);
+})
+
+fetchData.then(data => {
+  console.log(data.toUpperCase());
+})
+const vegetables: Array<string> = ['Tomato', 'Broccoli', 'Asparagus'];

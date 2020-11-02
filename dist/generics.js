@@ -28,3 +28,11 @@ stringLightDatabase.add('Banana');
 stringLightDatabase.add('Grape');
 stringLightDatabase.remove('Banana');
 console.log(stringLightDatabase.get());
+const fetchData = new Promise(resolve => {
+    setTimeout(() => {
+        resolve('hello');
+    }, 3000);
+});
+fetchData.then(data => {
+    console.log(data.toUpperCase());
+});
