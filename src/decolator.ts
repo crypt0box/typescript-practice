@@ -1,9 +1,11 @@
-function Logging(constructor: Function) {
-  console.log('Logging...')
-  console.log(constructor)
+function Logging(message: string) {
+  return function Logging(constructor: Function) {
+    console.log(message);
+    console.log(constructor);
+  }
 }
 
-@Logging  // デコレータはclassの定義時に実行される
+@Logging('Logging User')  // デコレータはclassの定義時に実行される
 class User {
   name = 'Quill';
   constructor() {
