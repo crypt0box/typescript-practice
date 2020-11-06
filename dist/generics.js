@@ -31,8 +31,9 @@ console.log(stringLightDatabase.get());
 const fetchData = new Promise(resolve => {
     setTimeout(() => {
         resolve('hello');
-    }, 3000);
+    }, 2000);
 });
 fetchData.then(data => {
     console.log(data.toUpperCase());
 });
+const vegetables = ['Tomato', 'Broccoli', 'Asparagus'];
