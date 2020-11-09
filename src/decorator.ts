@@ -5,12 +5,17 @@ function Logging(message: string) {
   }
 }
 function Component(template: string, selector: string) {
-  return function (constructor: { new(...args: any[]): { name: string } }) {
-    const mountedElement = document.querySelector(selector);
-    const instance = new constructor();
-    if (mountedElement) {
-      mountedElement.innerHTML = template;
-      mountedElement.querySelector('h1')!.textContent = instance.name;
+  return function <T extends { new(...args: any[]): { name: string } }>(constructor: T) {
+    return class extends constructor {
+      constructor(...args: any[]) {
+        super(...args);
+        const mountedElement = document.querySelector(selector);
+        const instance = new constructor();
+        if (mountedElement) {
+          mountedElement.innerHTML = template;
+          mountedElement.querySelector('h1')!.textContent = instance.name;
+        }
+      }
     }
   }
 }
@@ -19,7 +24,7 @@ function Component(template: string, selector: string) {
 @Logging('Logging User')  // デコレータはclassの定義時に実行される
 class User {
   name = 'Quill';
-  constructor() {
+  constructor(public age: number) {
     console.log('User was created!');
   }
 }
