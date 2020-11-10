@@ -20,9 +20,17 @@ function Component(template: string, selector: string) {
   }
 }
 
+function PropertyLogging(target: any, propertyKey: string) {
+  console.log('propertyLogging');
+  console.log(target);
+  console.log(propertyKey);
+}
+
 @Component('<h1>{{ name }}</h1>', '#app')
 @Logging('Logging User')  // デコレータはclassの定義時に実行される
 class User {
+  @PropertyLogging
+  static name2 = 'Quill';
   name = 'Quill';
   constructor(public age: number) {
     console.log('User was created!');
