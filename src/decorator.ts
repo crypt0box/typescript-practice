@@ -33,6 +33,14 @@ function MethodLogging(target: any, propertyKey: string, descripitor: PropertyDe
   console.log(descripitor);
 }
 
+function enumerable(isEnumerable: boolean) {
+  return function (target: any, propertyKey: string, descripitor: PropertyDescriptor) {
+    return {
+      enumerable: isEnumerable
+    }
+  }
+}
+
 function AccessorLogging(target: any, propertyKey: string, descripitor: PropertyDescriptor) {
   console.log('AccessorLogging');
   console.log(target);
@@ -40,12 +48,20 @@ function AccessorLogging(target: any, propertyKey: string, descripitor: Property
   console.log(descripitor);
 }
 
+function ParameterLogging(target: any, propertyKey: string, parameterIndex: number) {
+  console.log('ParameterLogging');
+  console.log(target);
+  console.log(propertyKey);
+  console.log(parameterIndex);
+}
+
 @Component('<h1>{{ name }}</h1>', '#app')
 @Logging('Logging User')  // デコレータはclassの定義時に実行される
 class User {
+  @enumerable(false)
   @MethodLogging
-  greeting() {
-    console.log('Hello!')
+  greeting( @ParameterLogging message: string) {
+    console.log(message)
   }
   @PropertyLogging
   static name2 = 'Quill';
