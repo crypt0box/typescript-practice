@@ -26,9 +26,20 @@ function PropertyLogging(target: any, propertyKey: string) {
   console.log(propertyKey);
 }
 
+function MethodLogging(target: any, propertyKey: string, descripitor: PropertyDescriptor) {
+  console.log('MethodLogging');
+  console.log(target);
+  console.log(propertyKey);
+  console.log(descripitor);
+}
+
 @Component('<h1>{{ name }}</h1>', '#app')
 @Logging('Logging User')  // デコレータはclassの定義時に実行される
 class User {
+  @MethodLogging
+  greeting() {
+    console.log('Hello!')
+  }
   @PropertyLogging
   static name2 = 'Quill';
   name = 'Quill';
